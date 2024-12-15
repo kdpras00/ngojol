@@ -5,18 +5,23 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
         DB::table('users')->insert([
-            'name' => 'kurniawandp',
+            'name' => 'Kurniawan Dwi Prasetyo',
             'email' => 'kdpras00@gmail.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('pras0123'), // Password dienkripsi
+            'remember_token' => Str::random(10),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Raihan Nugroho',
+            'email' => 'koyod@gmail.com',
+            'password' => Hash::make('koyod123'), // Password dienkripsi
+            'remember_token' => Str::random(10),
         ]);
     }
-} 
+}

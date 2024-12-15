@@ -8,9 +8,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call([
-            UsersTableSeeder::class,
-            PasswordResetsTableSeeder::class,
-        ]);
+        $this->call([PasswordResetsTableSeeder::class,]);
+        $this->call(CostumerOrderSeeder::class);
+        $this->call(CostumerMelakukanRatingTableSeeder::class);
+
     }
 }

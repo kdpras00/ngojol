@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RegisterController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DriverController;
 
 
 /*
@@ -14,6 +16,8 @@ use App\Http\Controllers\Api\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
+
 
 Route::get('/', function () {
     return view('home', [
@@ -83,3 +87,6 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 Route::get('/api/registers', [RegisterController::class, 'getAllRegisters'])->name('api.registers');
+
+Route::get('/pendaftaran-driver-baru', [DriverController::class, 'create']);
+Route::post('/submit-pendaftaran-driver', [DriverController::class, 'store']);

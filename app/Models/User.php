@@ -3,18 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements CanResetPassword
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Notifiable;
 
     protected $fillable = [
-        'name',
         'email',
         'password',
     ];
@@ -24,8 +20,14 @@ class User extends Authenticatable implements CanResetPassword
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    // Jika Anda ingin menggunakan Laravel Passport atau Sanctum untuk API authentication
+    public function createToken($name, array $scopes = [])
+    {
+        return $this->tokens()->create([
+            'name' => $name,
+            'scopes' => $scopes,
+        ]);
+    }
+
+    // Jika ada relasi lain, bisa ditambahkan di sini
 }

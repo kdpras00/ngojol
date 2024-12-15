@@ -13,9 +13,11 @@ class HistoryOrder extends Model
 
     protected $fillable = [
         'user_id',
-        'order_id',
-        'status',
-        'order_date'
+        'product_id',
+        'quantity',
+        'total_price',
+        'order_date',
+        'status'
     ];
 
     protected $casts = [

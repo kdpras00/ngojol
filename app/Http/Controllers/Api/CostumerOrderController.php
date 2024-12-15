@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CostumerOrder;    
+use App\Models\CostumerOrder;
 use Illuminate\Support\Facades\Validator;
 
 class CostumerOrderController extends Controller
@@ -27,14 +27,13 @@ class CostumerOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = new CostumerOrder;
-
         $rules = [
-            'username' => 'required',
+            'customer_name' => 'required', // Mengubah costumer_name menjadi customer_name sesuai dengan model
+            'email' => 'required',
             'order_date' => 'required|date',
-            'total_price' => 'required|numeric',
+            'total_price' => 'required|',
             'status' => 'required',
-            'payment_method' => 'required',
+            'payment_method' => 'required|',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -46,16 +45,11 @@ class CostumerOrderController extends Controller
             ], 400);
         }
 
-        $order->username = $request->username;
-        $order->order_date = $request->order_date;
-        $order->total_price = $request->total_price;
-        $order->status = $request->status;
-        $order->payment_method = $request->payment_method;
-        $order->save();
+        $order = CostumerOrder::create($request->all());
 
         return response()->json([
             'success' => true,
-            'message' => 'Data costumer order',
+            'message' => 'Data costumer order berhasil ditambahkan',
             'data' => $order
         ], 200);
     }
@@ -71,13 +65,13 @@ class CostumerOrderController extends Controller
                 'success' => true,
                 'message' => 'Data costumer order',
                 'data' => $order
-            ], 200);    
+            ], 200);
         } else {
             return response()->json([
                 'success' => false,
                 'message' => 'Data costumer order tidak ditemukan',
             ], 404);
-        }   
+        }
     }
 
     /**
@@ -94,9 +88,10 @@ class CostumerOrderController extends Controller
         }
 
         $rules = [
-            'username' => 'required',
-            'order_date' => 'required|date',
-            'total_price' => 'required|numeric',
+            'customer_name' => 'required', // Mengubah costumer_name menjadi customer_name sesuai dengan model
+            'email' => 'required',
+            'order_date' => 'required',
+            'total_price' => 'required',
             'status' => 'required',
             'payment_method' => 'required',
         ];
@@ -130,13 +125,13 @@ class CostumerOrderController extends Controller
                 'status' => false,
                 'message' => 'Data costumer order tidak ditemukan',
             ], 404);
-        }   
+        }
 
         $order->delete();
         return response()->json([
             'status' => true,
             'message' => 'Sukses menghapus data costumer order',
-        ], 200);    
+        ], 200);
     }
 
     public function getAllOrders()

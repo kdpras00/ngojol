@@ -9,7 +9,7 @@ class CostumerMelakukanRating extends Model
 {
     use HasFactory;
 
-    protected $table = 'costumer_melakukan_rating';
+    protected $table = 'customer_melakukan_rating';
 
     protected $fillable = [
         'customer_id',
@@ -18,7 +18,7 @@ class CostumerMelakukanRating extends Model
         'rating',
         'review',
         'rating_date',
-        'created_at',
-        'updated_at',
     ];
+
+    public $timestamps = true;
 }

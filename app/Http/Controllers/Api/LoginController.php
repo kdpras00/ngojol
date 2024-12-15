@@ -142,5 +142,3 @@ class LoginController extends Controller
         return response()->json(login::all());
     }
 }
-
-

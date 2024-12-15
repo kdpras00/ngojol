@@ -29,9 +29,11 @@ class HistoryorderController extends Controller
     {
         $rules = [
             'user_id' => 'required|integer',
-            'order_id' => 'required|integer',
-            'status' => 'required|string',
+            'product_id' => 'required|integer',
+            'quantity' => 'required|integer',
+            'total_price' => 'required|integer',
             'order_date' => 'required|date',
+            'status' => 'required|string'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -87,9 +89,11 @@ class HistoryorderController extends Controller
 
         $rules = [
             'user_id' => 'required|integer',
-            'order_id' => 'required|integer',
-            'status' => 'required|string',
+            'product_id' => 'required|integer',
+            'quantity' => 'required|integer',
+            'total_price' => 'required|integer',
             'order_date' => 'required|date',
+            'status' => 'required|string'
         ];
 
         $validator = Validator::make($request->all(), $rules);

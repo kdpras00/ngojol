@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CostumerMelakukanRating;    
 use Illuminate\Support\Facades\Validator;
 
-class CostumermelakukanratingController extends Controller
+class CostumerMelakukanRatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,11 @@ class CostumermelakukanratingController extends Controller
         $ratings = CostumerMelakukanRating::orderBy('id', 'asc')->get();
         return response()->json([
             'success' => true,
-            'message' => 'Data costumer melakukan rating',
+            'message' => 'Data costumer rating',
             'data' => $ratings
         ], 200);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -30,11 +31,11 @@ class CostumermelakukanratingController extends Controller
         $rating = new CostumerMelakukanRating;
 
         $rules = [
-            'customer_id' => 'required|integer',
-            'customer_name' => 'required|string',
-            'order_id' => 'required|integer',
-            'rating' => 'required|integer|min:1|max:5',
-            'review' => 'required|string',
+            'customer_id' => 'required',
+            'customer_name' => 'required',
+            'order_id' => 'required',
+            'rating' => 'required',
+            'review' => 'required',
             'rating_date' => 'required|date',
         ];
 
@@ -42,7 +43,7 @@ class CostumermelakukanratingController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'message' => 'Gagal memasukkan data costumer melakukan rating',
+                'message' => 'Gagal memasukkan data costumer rating',
                 'data' => $validator->errors()
             ], 400);
         }
@@ -57,7 +58,7 @@ class CostumermelakukanratingController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Data costumer melakukan rating',
+            'message' => 'Data costumer rating berhasil disimpan',
             'data' => $rating
         ], 200);
     }
@@ -71,13 +72,13 @@ class CostumermelakukanratingController extends Controller
         if ($rating) {
             return response()->json([
                 'success' => true,
-                'message' => 'Data costumer melakukan rating',
+                'message' => 'Data costumer rating ditemukan',
                 'data' => $rating
             ], 200);    
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data costumer melakukan rating tidak ditemukan',
+                'message' => 'Data costumer rating tidak ditemukan',
             ], 404);
         }   
     }
@@ -91,16 +92,16 @@ class CostumermelakukanratingController extends Controller
         if (empty($rating)) {
             return response()->json([
                 'status' => false,
-                'message' => 'Data costumer melakukan rating tidak ditemukan',
+                'message' => 'Data costumer rating tidak ditemukan',
             ], 404);
         }
 
         $rules = [
-            'customer_id' => 'required|integer',
-            'customer_name' => 'required|string',
-            'order_id' => 'required|integer',
-            'rating' => 'required|integer|min:1|max:5',
-            'review' => 'required|string',
+            'customer_id' => 'required',
+            'customer_name' => 'required',
+            'order_id' => 'required',
+            'rating' => 'required',
+            'review' => 'required',
             'rating_date' => 'required|date',
         ];
 
@@ -117,7 +118,7 @@ class CostumermelakukanratingController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Sukses melakukan update data costumer melakukan rating',
+            'message' => 'Sukses melakukan update data costumer rating',
             'data' => $rating
         ], 200);
     }
@@ -131,14 +132,14 @@ class CostumermelakukanratingController extends Controller
         if (empty($rating)) {
             return response()->json([
                 'status' => false,
-                'message' => 'Data costumer melakukan rating tidak ditemukan',
+                'message' => 'Data costumer rating tidak ditemukan',
             ], 404);
         }   
 
         $rating->delete();
         return response()->json([
             'status' => true,
-            'message' => 'Sukses menghapus data costumer melakukan rating',
+            'message' => 'Sukses menghapus data costumer rating',
         ], 200);    
     }
 

@@ -57,25 +57,24 @@
                                 font-family: 'Poppins', sans-serif;
                                 font-size: 2.5rem;
                             }
-
                         </style>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-1">
                     <a href="#fitur"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">Fitur</a>
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">Fitur</a>
                     <a href="#layanan"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">Layanan</a>
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">Layanan</a>
                     <a href="#review"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">Review</a>
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">Review</a>
                     <a href="#download"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">Download</a>
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">Download</a>
                     <a href="#berita"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">Berita</a>
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">Berita</a>
                     <a href="#faq"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">FAQ</a>
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">FAQ</a>
                     <a href="#hubungi"
-                        class="px-3 py-2 text-white hover:text-orange-500 transition duration-300 navbar-link">Hubungi
+                        class="px-3 py-2 text-white hover:text-slate-500 transition duration-300 navbar-link">Hubungi
                         Kami</a>
                     <a href="{{ url('/pendaftaran-driver-baru') }}">
                         <button

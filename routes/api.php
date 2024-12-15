@@ -11,8 +11,9 @@
     use App\Http\Controllers\Api\DriverSampaiTujuanController;
     use App\Http\Controllers\Api\CostumermelakukanratingController;
     use App\Http\Controllers\Api\HistoryOrderController;
-    use App\Http\Controllers\API\Auth\PasswordresetController; // Corrected namespace
     use App\Http\Controllers\Api\UserController;
+    use App\Http\Controllers\Api\PasswordresetController; // Added missing import
+    use App\Http\Controllers\Auth\ResetPasswordController;
 
     Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         return $request->user();
@@ -28,5 +29,13 @@
     Route::apiResource('costumermelakukanrating', CostumermelakukanratingController::class);
     Route::apiResource('historyorder', HistoryOrderController::class);
 
-    Route::apiResource('user', UserController::class);
-    Route::apiResource('passwordreset', PasswordresetController::class);
+    Route::apiResource('passwordreset', PasswordresetController::class); // Uncommented the line
+    // Route::apiResource('user', UserController::class);
+    // Route ini digunakan untuk mengirimkan tautan reset password ke email pengguna
+    Route::post('forgot-password', [PasswordresetController::class, 'forgotPassword']);
+    
+    // Route ini digunakan untuk mereset password pengguna dengan token yang valid
+    Route::post('reset-password', [PasswordresetController::class, 'resetPassword']);
+
+
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
