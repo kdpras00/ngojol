@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\RegisterController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\Api\RegisterController;
 
 
 /*
@@ -16,6 +17,7 @@ use App\Http\Controllers\DriverController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Auth::routes();
 
 
@@ -68,19 +70,19 @@ Route::get('/faq', function () {
     ]);
 });
 
-Route::get('/aman-dan-nyaman-di-era-new-normal', function () {
-    return view('aman-dan-nyaman-di-era-new-normal', [
-        'title' => 'Aman dan Nyaman Di Era New Normal',
-        'active' => 'aman-dan-nyaman-di-era-new-normal'
-    ]);
-});
+// Route::get('/news', function () {
+//     return view('news', [
+//         'title' => 'news',
+//         'active' => 'news'
+//     ]);
+// });
 
-Route::get('/pendaftaran-driver-baru', function () {
-    return view('pendaftaran-driver-baru', [
-        'title' => 'Pendaftaran Driver',
-        'active' => 'pendaftaran-driver-baru'
-    ]);
-});
+// Route::get('/pendaftaran-driver-baru', function () {
+//     return view('pendaftaran-driver-baru', [
+//         'title' => 'Pendaftaran Driver',
+//         'active' => 'pendaftaran-driver-baru'
+//     ]);
+// });
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
 
@@ -88,5 +90,10 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 Route::get('/api/registers', [RegisterController::class, 'getAllRegisters'])->name('api.registers');
 
-Route::get('/pendaftaran-driver-baru', [DriverController::class, 'create']);
-Route::post('/submit-pendaftaran-driver', [DriverController::class, 'store']);
+Route::get('/pendaftaran-driver-baru', [DriverController::class, 'showRegistrationForm']);
+Route::post('/submit-pendaftaran-driver', [DriverController::class, 'submitRegistration']);
+
+
+
+Route::get('/berita', [NewsController::class, 'index'])->name('news.index');
+Route::get('/berita/{id}', [NewsController::class, 'show'])->name('news.detail');
